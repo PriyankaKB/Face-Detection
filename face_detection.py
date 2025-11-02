@@ -14,8 +14,10 @@ while True:
     # Convert the frame to grayscale for face detection
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
-    # Detect faces in the frame
-    faces = face_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
+    # Detect faces in the frame (tuned parameters for better detection)
+    faces = face_cascade.detectMultiScale(
+        gray, scaleFactor=1.05, minNeighbors=3, minSize=(20, 20)
+    )
 
     if len(faces) > 0:
         print("Face detected. Continuing webcam proctoring.")
